@@ -16,7 +16,7 @@ function initAudio(element){
 	audio = new Audio('media/' + song);
 	
 	if(!audio.currentTime){
-		$('#duration').html('0.00');
+		$('#duration').html('0:00');
 	}
 
 	$('#audio-player .title').text(title);
@@ -51,7 +51,7 @@ $('#stop').click(function(){
 	audio.currentTime = 0;
 	$('#pause').hide();
 	$('#play').show();
-	$('#duration').html('0.00');
+	$('#duration').html('0:00');
 });
 
 //Next Button
@@ -102,7 +102,7 @@ function showDuration(){
 		if (s < 10) {
 			s = '0' + s;
 		}
-		$('#duration').html(m + '.' + s);	
+		$('#duration').html(m + ':' + s);	
 		var value = 0;
 		if (audio.currentTime > 0) {
 			value = Math.floor((100 / audio.duration) * audio.currentTime);
@@ -113,19 +113,6 @@ function showDuration(){
 		});
 
 }
-
-/*After song ends play next song
-$(audio).on("ended", function() {
-    audio.pause();
-    var next = $('#playlist li.active').next();
-    if (next.length == 0) {
-        next = $('#playlist li:first-child');
-    } 
-    initAudio(next);
- audio.play();
- showDuration();
-});
-*/
 
 //Skip to the another part of song 
 
